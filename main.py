@@ -3,6 +3,13 @@
 Created on Sat Nov 10 14:53:29 2018
 
 @author: Mechkro
+
+OVERVIEW:
+
+	- THIS IS A GAME CREATED WITH PYGAME AND IS MEANT TO BE A COPY OF THE SC2 GAME MARINE ARENA
+	- THIS CODE IS FOLLOWING A TUTORIAL BY:
+		- SAUCE LINK: TO FOLLOW
+
 """
 
 import pygame as pg
@@ -23,7 +30,7 @@ class Game:
         self.load_data()
 
     def load_data(self):
-        """To be later defined """        
+        """To be later defined """
         pass
 
     def new(self):
@@ -68,7 +75,9 @@ class Game:
 
     def events(self):
         """Function to call and update items that change w/ respect
-        to time"""
+        to time
+		-
+	"""
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 self.quit()
