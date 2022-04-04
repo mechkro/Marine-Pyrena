@@ -5,6 +5,7 @@ Created on Sat Nov 10 15:05:11 2018
 @author: Mechkro
 """
 
+from lib2to3 import pygram
 import pygame as pg
 from settings import *
 
@@ -14,6 +15,7 @@ from settings import *
 
 class Player(pg.sprite.Sprite):
     def __init__(self, game, x, y):
+        self.game = game
         self.groups = game.all_sprites
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
@@ -26,8 +28,15 @@ class Player(pg.sprite.Sprite):
     def move(self, dx=0, dy=0):
         """Define players position in terms of x and y and alters it by the
         change in x and y"""
-        self.x += dx
-        self.y += dy
+        i = pg.sprite.spritecollide(self, self.game.walls, False)
+        if i:
+            if dx:
+                self.x += -1
+            if dy:
+                self.y += -1
+        else:
+            self.x += dx
+            self.y += dy
 
     def update(self):
         """Update func to supply positional data at an innstant"""
